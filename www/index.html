@@ -31,7 +31,7 @@
       <ion-content>
           <p id="pUno">Exito!!</p>
           <label class="item item-input">
-            <input type="text" placeholder="Person ID" id="personID" value=""/>
+            <input type="text" placeholder="Person ID" id="personID" value="" />
           </label>
           <input class="button button-block button-positive" type="button" id="get" value="Get"/>
           <input class="button button-block button-positive" type="button" id="post" value="Post"/>
@@ -52,9 +52,9 @@
           console.log("Not Done");
         });
       });
-      
+
       $("#post").click(function(){
-        $.post("http://localhost:8001/post")
+        $.post("http://localhost:8001/post/hola")
         .success(function(response) {
           console.log("Doneeeee");
         })

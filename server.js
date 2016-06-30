@@ -12,6 +12,8 @@ var connection = mysql.createConnection({
 
 var app = express();
 
+app.use(bodyParser.json());
+
 connection.connect();
 
 
@@ -32,7 +34,10 @@ app.get('/', function(req, res){
 });
 
 // Post
-app.post('/post', function(req, res){
+app.post('/post/:id', function(req, res){
+  var input = req.params.id;
+
+  console.log(input);
   console.log("Entró a post.");
     console.log('Connection succesfull');
 

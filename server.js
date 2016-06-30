@@ -2,7 +2,6 @@ var express = require('express');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 
-
 // Application initialization
 
 var connection = mysql.createConnection({
@@ -13,31 +12,36 @@ var connection = mysql.createConnection({
 
 var app = express();
 
-//connection.connect();
-
+connection.connect();
 
 
 console.log("Empezó.");
-// Main route sends our HTML file
+
+// Get en root
 app.get('/', function(req, res){
-  //console.log("Entró a /");
-  console.log("Entró.");
-  connection.connect();
-    console.log('SUCCESSSSSSS CONEXION');
+  console.log("Entró a get.");
+    console.log('Connection succesfull');
     connection.query('USE hola;');
     connection.query('SELECT * FROM PersonID', function(err, rows, fields) {
       if (err) throw err;
-      console.log('SUCCESSSSSSS');
+      console.log("Successsss, se desplegó la informmación. Lo de abajo solamente es la primera entrada de la base de datos")
       console.log('The ID is: ', rows[0].ID);
     });
 
-  connection.end();
 
 });
-/*
-app.get('/', function(req, res){
-  res.send('hello world');
+
+// Post
+app.post('/post', function(req, res){
+  console.log("Entró a post.");
+    console.log('Connection succesfull');
+
+    connection.query('USE hola;');
+    connection.query('INSERT INTO PersonID (ID) VALUES("123")', function(err, rows, fields) {
+      console.log("Successsss, se metió la informmación")
+    });
+
+
 });
-*/
 
 app.listen(8001);

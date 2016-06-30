@@ -33,17 +33,28 @@
           <label class="item item-input">
             <input type="text" placeholder="Person ID" id="personID" value=""/>
           </label>
-          <input class="button button-block button-positive" type="button" id="submit" value="Registro"/>
+          <input class="button button-block button-positive" type="button" id="get" value="Get"/>
+          <input class="button button-block button-positive" type="button" id="post" value="Post"/>
       </ion-content>
     </ion-pane>
   </body>
   <script>
     $(document).ready(function(){
       var personID;
-      $("#submit").click(function(){
+      $("#get").click(function(){
         personID=$("#personID").val();
 
         $.get("http://localhost:8001/")
+        .success(function(response) {
+          console.log("Doneeeee");
+        })
+        .error(function(response) {
+          console.log("Not Done");
+        });
+      });
+      
+      $("#post").click(function(){
+        $.post("http://localhost:8001/post")
         .success(function(response) {
           console.log("Doneeeee");
         })

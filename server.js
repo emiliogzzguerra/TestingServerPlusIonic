@@ -42,7 +42,7 @@ app.post('/post/:id', function(req, res){
     console.log('Connection succesfull');
 
     connection.query('USE hola;');
-    connection.query('INSERT INTO PersonID (ID) VALUES("123")', function(err, rows, fields) {
+    connection.query('INSERT INTO PersonID (ID) VALUES("'+input+'")', function(err, rows, fields) {
       console.log("Successsss, se metió la informmación")
     });
 
